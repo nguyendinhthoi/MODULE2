@@ -1,4 +1,4 @@
-package ss6_inheritance.practice;
+package ss7_abstract_class_and_interface.exercise.colorable;
 
 public class Square extends Rectangle {
     public Square() {
@@ -9,7 +9,7 @@ public class Square extends Rectangle {
     }
 
     public Square(String color, boolean filled, double side) {
-        super(color, filled, side, side);
+        super(side, side, "red", true);
     }
 
     public double getSide() {
@@ -20,20 +20,34 @@ public class Square extends Rectangle {
         setWidth(side);
         setLength(side);
     }
-    @Override
-    public void setWidth(double width){
-        setSide(width);
-    }
-    @Override
-    public void setLength(double length){
-        setSide(length);
-    }
-    @Override
-    public String toString(){
-        return "A Square with side=" +
-                getSide()+
-                ", which is a subclass of "
-                +super.toString();
+
+
+    public double getArea() {
+        return Math.pow(getSide(), 2);
     }
 
+
+    @Override
+    public void setWidth(double width) {
+        setSide(width);
+    }
+
+    @Override
+    public void setLength(double length) {
+        setSide(length);
+    }
+
+    @Override
+    public String toString() {
+        return "A Square with side=" +
+                getSide() + ", area= " + getArea() +
+                ", which is a subclass of "
+                + super.toString();
+    }
+
+    @Override
+    public void howToClor() {
+        super.howToClor();
+        System.out.println("Color all four sides");
+    }
 }
