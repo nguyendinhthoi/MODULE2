@@ -33,7 +33,7 @@ public class Main {
                     System.exit(0);
                 }
             }
-        } while (name != "Circle" || name != "Rectangle" || name != "Square");
+        } while (true);
     }
 }
 
