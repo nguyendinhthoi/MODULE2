@@ -26,7 +26,6 @@ public class Main {
                     System.out.println(shapes[1]);
                     break;
                 } else if (Objects.equals(name, "Square")) {
-                    System.out.println(shapes[2]);
                     shapes[2].howToClor();
                     break;
                 } else if (Objects.equals(name, "Exit")) {
