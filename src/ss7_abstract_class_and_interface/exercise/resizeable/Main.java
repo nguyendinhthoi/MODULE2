@@ -13,6 +13,7 @@ public class Main {
         shapes[1] = new Rectangle(3, 4, "blue", false);
         shapes[2] = new Square("yellow", true, 5);
 
+
         String name;
         do {
             System.out.println("Let enter name of shape ( Circle , Rectangle , Square ) \n*Exit* to out!!");
@@ -47,7 +48,7 @@ public class Main {
                     System.exit(0);
                 }
             }
-        } while (name != "Circle" || name != "Rectangle" || name != "Square");
+        } while (true);
     }
 }
 

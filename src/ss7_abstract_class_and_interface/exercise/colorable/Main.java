@@ -20,16 +20,16 @@ public class Main {
             name = scanner.nextLine();
             for (int i = 0; i < shapes.length; i++) {
                 if (Objects.equals(name, "Circle")) {
-                    System.out.println(shapes[0]);
+                    System.err.println(shapes[0]);
                     break;
                 } else if (Objects.equals(name, "Rectangle")) {
-                    System.out.println(shapes[1]);
+                    System.err.println(shapes[1]);
                     break;
                 } else if (Objects.equals(name, "Square")) {
                     shapes[2].howToClor();
                     break;
                 } else if (Objects.equals(name, "Exit")) {
-                    System.out.println("Im out");
+                    System.err.println("Im out");
                     System.exit(0);
                 }
             }

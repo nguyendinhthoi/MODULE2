@@ -13,6 +13,6 @@ public class Chicken extends Animal implements Edible {
 
     @Override
     public void howToEat() {
-        System.out.println("Can be Fried");
+        System.out.println("Fried");
     }
 }

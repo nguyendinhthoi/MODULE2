@@ -1,5 +1,9 @@
 package ss7_abstract_class_and_interface.practice.animal;
 
-public abstract class Animal {
+
+import ss7_abstract_class_and_interface.practice.edible.Edible;
+
+public abstract class Animal{
     public abstract String makeSound();
+
 }
