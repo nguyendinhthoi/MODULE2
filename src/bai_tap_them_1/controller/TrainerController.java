@@ -10,7 +10,7 @@ public class TrainerController {
     public static void showTrainerList() {
 
         Scanner scanner = new Scanner(System.in);
-        int choose = Integer.parseInt(scanner.nextLine());
+
 
         boolean flag = true;
         do {
@@ -20,18 +20,24 @@ public class TrainerController {
                     "\n2. Delete Trainer " +
                     "\n3. Show trainer list " +
                     "\n4. Exit " +
-                    "Choose function : ");
+                    "\nChoose function : ");
+            int choose = Integer.parseInt(scanner.nextLine());
             switch (choose) {
                 case 1:
+                    System.out.println("--$-ADD TRAINER-$--");
+                    trainerService.addTrainer();
+                    break;
                 case 2:
+                    System.out.println("--$-DELETE TRAINER-$--");
+                    break;
                 case 3:
                     System.out.println("--$-TRAINER LIST-$--");
                     trainerService.display();
+                    break;
                 case 4:
                     System.out.println("The Program is Closed!!");
                     System.exit(0);
             }
         } while (flag);
-
     }
 }

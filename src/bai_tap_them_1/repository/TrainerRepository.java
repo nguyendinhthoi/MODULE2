@@ -20,8 +20,8 @@ public class TrainerRepository implements ITrainerRepository {
     }
 
     @Override
-    public void addTrainer() {
-
+    public void addTrainer(Trainer trainer) {
+        trainerList.add(trainer);
     }
 
     @Override

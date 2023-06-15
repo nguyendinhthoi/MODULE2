@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface ITrainerRepository {
     List<Trainer> dislay();
-    void addTrainer();
+    void addTrainer(Trainer trainer);
     void deleteTrainer();
 }
