@@ -7,5 +7,5 @@ import java.util.List;
 public interface ITrainerRepository {
     List<Trainer> dislay();
     void addTrainer(Trainer trainer);
-    void deleteTrainer();
+    void deleteTrainer(int id);
 }

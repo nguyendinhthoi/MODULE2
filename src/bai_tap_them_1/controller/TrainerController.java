@@ -29,6 +29,7 @@ public class TrainerController {
                     break;
                 case 2:
                     System.out.println("--$-DELETE TRAINER-$--");
+                    trainerService.deleteTrainer();
                     break;
                 case 3:
                     System.out.println("--$-TRAINER LIST-$--");

@@ -25,7 +25,7 @@ public class TrainerRepository implements ITrainerRepository {
     }
 
     @Override
-    public void deleteTrainer() {
-
+    public void deleteTrainer(int id) {
+        trainerList.remove(id);
     }
 }

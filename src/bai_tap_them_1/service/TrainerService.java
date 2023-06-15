@@ -5,6 +5,7 @@ import bai_tap_them_1.model.Trainer;
 import bai_tap_them_1.repository.TrainerRepository;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class TrainerService implements ITrainerService {
@@ -41,6 +42,10 @@ public class TrainerService implements ITrainerService {
 
     @Override
     public void deleteTrainer() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter id you want to delete");
+        int id = Integer.parseInt(scanner.nextLine());
+            trainerRepository.deleteTrainer(id);
 
     }
 }
