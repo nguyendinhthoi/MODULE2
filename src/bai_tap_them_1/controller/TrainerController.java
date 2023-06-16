@@ -11,8 +11,8 @@ public class TrainerController {
 
         Scanner scanner = new Scanner(System.in);
 
-
         boolean flag = true;
+
         do {
             System.out.println("--TRAINER MANAGEMENT PROGRAM--");
             System.out.println("Enter number to choose function : ");

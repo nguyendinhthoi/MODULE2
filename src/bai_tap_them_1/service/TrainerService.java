@@ -44,8 +44,10 @@ public class TrainerService implements ITrainerService {
     public void deleteTrainer() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter id you want to delete");
+
         int id = Integer.parseInt(scanner.nextLine());
-            trainerRepository.deleteTrainer(id);
+
+        trainerRepository.deleteTrainer(id);
 
     }
 }
