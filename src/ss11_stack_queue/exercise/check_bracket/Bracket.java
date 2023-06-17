@@ -34,8 +34,10 @@ public class Bracket {
             stack.pop();
             stack1.pop();
         }
+
         System.out.printf("\nStack after delete '(' = %s", stack);
         System.out.printf("\nStack1 after delete ')' = %s ", stack1);
+
         if (stack1.isEmpty() && stack.isEmpty()) {
             System.err.println("\nTrue");
         } else {
