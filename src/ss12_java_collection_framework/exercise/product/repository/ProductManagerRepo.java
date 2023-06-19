@@ -45,6 +45,22 @@ public class ProductManagerRepo implements IProductManagerRepo {
         }
     }
 
+    @Override
+    public void showProductById(int id) {
+            int index = searchIndex(id);
+            System.out.println(productList.get(index));
+    }
+
+    @Override
+    public int searchIndex(int id) {
+        for (int i = 0; i < productList.size(); i++) {
+            if (id == productList.get(i).getId()) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
 
     @Override
     public void searchProduct(String name) {
@@ -58,7 +74,7 @@ public class ProductManagerRepo implements IProductManagerRepo {
     @Override
     public void arrangeProduct() {
         Collections.sort(productList, new PriceComparator());
-        for (Product value: productList) {
+        for (Product value : productList) {
             System.out.println(value);
 
         }

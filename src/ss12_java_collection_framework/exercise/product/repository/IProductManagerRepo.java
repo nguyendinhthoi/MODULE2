@@ -16,6 +16,10 @@ public interface IProductManagerRepo {
     void displayList();
 
 
+    void showProductById(int id);
+
+    int searchIndex(int id);
+
     void searchProduct(String name);
 
     void arrangeProduct();

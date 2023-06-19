@@ -3,6 +3,7 @@ package ss12_java_collection_framework.exercise.product.service;
 import ss12_java_collection_framework.exercise.product.model.Product;
 import ss12_java_collection_framework.exercise.product.repository.ProductManagerRepo;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class ProductManagerService implements IProductManagerService {
@@ -11,11 +12,11 @@ public class ProductManagerService implements IProductManagerService {
 
     @Override
     public void addProduct() {
-        System.out.println("Enter id you want to add : ");
+        System.out.print("Enter id you want to add : ");
         int id = Integer.parseInt(scanner.nextLine());
-        System.out.println("Enter name of product :");
+        System.out.print("Enter name of product :");
         String name = scanner.nextLine();
-        System.out.println("Enter price of product :");
+        System.out.print("Enter price of product :");
         double price = Double.parseDouble(scanner.nextLine());
 
         Product product = new Product(id, name, price);
@@ -24,23 +25,37 @@ public class ProductManagerService implements IProductManagerService {
 
     @Override
     public void editProduct() {
-        System.out.println("Enter id you want to edit : ");
+        System.out.print("Enter id you want to edit : ");
         int id = Integer.parseInt(scanner.nextLine());
-        System.out.println("Change name of product :");
-        String name = scanner.nextLine();
-        System.out.println("Change price of product :");
-        double price = Double.parseDouble(scanner.nextLine());
+        if (Objects.equals(productManagerRepo.searchIndex(id), -1)) {
+            System.err.println("Id not found");
+        } else {
+            System.out.print("Change name of product :");
+            String name = scanner.nextLine();
+            System.out.print("Change price of product :");
+            double price = Double.parseDouble(scanner.nextLine());
 
-        Product product = new Product(id, name, price);
-        productManagerRepo.editProduct(id,product);
-
+            Product product = new Product(id, name, price);
+            productManagerRepo.editProduct(id, product);
+        }
     }
 
     @Override
     public void deleteProduct() {
-        System.out.println("Enter the id of product you want to delete : ");
+        System.out.print("Enter the id of product you want to delete : ");
         int id = Integer.parseInt(scanner.nextLine());
-        productManagerRepo.deleteProduct(id);
+        if (Objects.equals(productManagerRepo.searchIndex(id), -1)) {
+            System.err.println("Id not found");
+        } else {
+            productManagerRepo.showProductById(id);
+            System.out.print("You want to delete this product?(yes or no)");
+            String confirm = scanner.nextLine();
+            if (Objects.equals(confirm, "yes")) {
+                productManagerRepo.deleteProduct(id);
+            } else if (Objects.equals(confirm, "no")) {
+                System.err.println("Choose another function again!");
+            }
+        }
     }
 
     @Override
@@ -50,15 +65,28 @@ public class ProductManagerService implements IProductManagerService {
 
     @Override
     public void searchProduct() {
-        System.out.println("Enter name of product you want to search : ");
-            String name = scanner.nextLine();
+        System.out.print("Enter name of product you want to search : ");
+        String name = scanner.nextLine();
 
-            productManagerRepo.searchProduct(name);
+        productManagerRepo.searchProduct(name);
+    }
+
+    @Override
+    public void showProductById() {
+        System.out.print("Enter Id to check index of product : ");
+        int id = Integer.parseInt(scanner.nextLine());
+        productManagerRepo.showProductById(id);
+    }
+
+    @Override
+    public void searchIndex() {
+        System.out.print("Enter Id to check index of product : ");
+        int id = Integer.parseInt(scanner.nextLine());
+        productManagerRepo.searchIndex(id);
     }
 
     @Override
     public void arrangeProduct() {
         productManagerRepo.arrangeProduct();
-
     }
 }

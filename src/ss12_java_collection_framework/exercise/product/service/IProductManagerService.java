@@ -6,5 +6,8 @@ public interface IProductManagerService {
     void deleteProduct();
     void displayList();
     void searchProduct();
+    void showProductById();
+
+    void searchIndex();
     void arrangeProduct();
 }
