@@ -18,7 +18,7 @@ public class TrainerController {
             System.out.println("Enter number to choose function : ");
             System.out.println("1. Add Trainer " +
                     "\n2. Delete Trainer " +
-                    "\n3. Show trainer list " +
+                    "\n3. Show trainer list.csv " +
                     "\n4. Exit " +
                     "\nChoose function : ");
             int choose = Integer.parseInt(scanner.nextLine());
