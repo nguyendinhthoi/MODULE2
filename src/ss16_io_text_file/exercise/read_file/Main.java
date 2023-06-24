@@ -1,7 +1,8 @@
 package ss16_io_text_file.exercise.read_file;
 
 
-import java.util.Arrays;
+import java.util.ArrayList;
+
 import java.util.List;
 
 public class Main {
@@ -10,7 +11,8 @@ public class Main {
         String[] info = null;
         for (String s : list) {
             info = s.split(",");
+            Country country = new Country(Integer.parseInt(info[0]), info[1], info[2]);
+            System.out.println(country.getId() + "," + country.getCode() + "," + country.getName());
         }
-        System.out.println(Arrays.toString(info));
     }
 }
