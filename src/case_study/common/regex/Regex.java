@@ -35,6 +35,7 @@ public class Regex {
     public static String checkName() throws InValidFormat {
         String name;
         do {
+
             System.out.print("Let Enter Name of Employee (Must Capitalize the first letter of each word): ");
             name = scanner.nextLine();
             validEmployee(EMPLOYEE_NAME, name);

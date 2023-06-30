@@ -3,7 +3,7 @@ package case_study.model.person;
 public abstract class Person {
     protected String name;
     protected String dateOfBirth;
-    protected boolean gender;
+    protected String gender;
     protected String identity;
     protected String phoneNumber;
     protected String email;
@@ -11,7 +11,7 @@ public abstract class Person {
     public Person() {
     }
 
-    public Person(String name, String dateOfBirth, boolean gender, String identity, String phoneNumber, String email) {
+    public Person(String name, String dateOfBirth, String gender, String identity, String phoneNumber, String email) {
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;

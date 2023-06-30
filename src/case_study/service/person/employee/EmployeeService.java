@@ -6,6 +6,7 @@ import case_study.common.exception.IDAvailable;
 import case_study.common.exception.IDNotFound;
 import case_study.common.exception.InValidFormat;
 import case_study.common.regex.Regex;
+import case_study.common.regex.Regex1;
 import case_study.model.person.Employee;
 import case_study.repository.person.employee.EmployeeRepository;
 import case_study.repository.person.employee.IEmployeeRepository;
@@ -33,24 +34,15 @@ public class EmployeeService implements IEmployeeService {
             try {
                 String employeeCode = Regex.checkValidID();
                 if (employeeRepository.searchIndex(employeeCode) == -1) {
-                    System.out.print("Let Enter Name of Employee : ");
-                    String name = scanner.nextLine();
-                    System.out.print("Let Enter Date of Birth of Employee : ");
-                    String date = scanner.nextLine();
-                    System.out.print("Let Enter Gender of Employee : ");
-                    boolean gender = Boolean.parseBoolean(scanner.nextLine());
-                    System.out.print("Let Enter Identity of Employee : ");
-                    String identity = scanner.nextLine();
-                    System.out.print("Let Enter PhoneNumber of Employee : ");
-                    String phoneNumber = scanner.nextLine();
-                    System.out.print("Let Enter Email of Employee : ");
-                    String email = scanner.nextLine();
-                    System.out.print("Let Enter Level of Employee : ");
-                    String level = scanner.nextLine();
-                    System.out.print("Let Enter Role of Employee : ");
-                    String role = scanner.nextLine();
-                    System.out.print("Let Enter Salary of Employee : ");
-                    String salary = scanner.nextLine();
+                    String name = Regex1.checkName();
+                    String date = Regex.checkDate();
+                    String gender = Regex1.checkGender();
+                    String identity = Regex1.checkIdentity();
+                    String phoneNumber = Regex1.checkPhone();
+                    String email = Regex1.checkEmail();
+                    String level = Regex1.checkLevels();
+                    String role = Regex1.checkRole();
+                    double salary = Regex1.checkSalary();
 
                     Employee employee = new Employee(employeeCode, name, date, gender, identity, phoneNumber, email, level, role, salary);
                     employeeRepository.addEmployee(employee);
@@ -71,9 +63,9 @@ public class EmployeeService implements IEmployeeService {
     // , String email, String employeeCode, String level, String role, double salary
     @Override
     public void editEmployee() {
-
+        do {
             try {
-                String employeeCode = Regex.checkValidID();
+                String employeeCode = Regex1.checkID();
                 if (employeeRepository.searchIndex(employeeCode) == -1) {
                     throw new IDNotFound();
                 } else {
@@ -82,26 +74,22 @@ public class EmployeeService implements IEmployeeService {
                     String confirm = scanner.nextLine();
 
                     if (Objects.equals(confirm, "yes")) {
-                        String name = Regex.checkName();
+                        String name = Regex1.checkName();
                         String date = Regex.checkDate();
-                        System.out.print("Change Gender of Employee to :");
-                        boolean gender = Boolean.parseBoolean(scanner.nextLine());
-                        String identity = Regex.checkIdentity();
-                        String phoneNumber = Regex.checkPhone();
-                        System.out.print("Change Email of Employee to :");
-                        String email = scanner.nextLine();
-                        System.out.print("Change Level of Employee to :");
-                        String level = scanner.nextLine();
-                        System.out.print("Change Role of Employee to :");
-                        String role = scanner.nextLine();
-                        String salary = Regex.checkSalary();
+                        String gender = Regex1.checkGender();
+                        String identity = Regex1.checkIdentity();
+                        String phoneNumber = Regex1.checkPhone();
+                        String email = Regex1.checkEmail();
+                        String level = Regex1.checkLevels();
+                        String role = Regex1.checkRole();
+                        double salary = Regex1.checkSalary();
 
                         Employee employee = new Employee(employeeCode, name, date, gender, identity, phoneNumber, email, level, role, salary);
                         employeeRepository.editEmployee(employeeCode, employee);
-
+                        break;
                     } else if (Objects.equals(confirm, "no")) {
                         System.out.println("Choose another Function!!!");
-
+                        break;
                     } else {
                         throw new ConfirmFormat();
                     }
@@ -113,6 +101,6 @@ public class EmployeeService implements IEmployeeService {
             } catch (ConfirmFormat e) {
                 System.out.println("Please Just Enter yes or no!!! Try Again!!!");
             }
-
+        } while (true);
     }
 }

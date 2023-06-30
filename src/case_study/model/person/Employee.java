@@ -6,20 +6,20 @@ public class Employee extends Person implements Comparable<Employee> {
     private String employeeCode;
     private String level;
     private String role;
-    private String salary;
+    private double salary;
     public final static String COMMAA = ",";
 
     public Employee() {
     }
 
-    public Employee(String employeeCode, String level, String role, String salary) {
+    public Employee(String employeeCode, String level, String role, double salary) {
         this.employeeCode = employeeCode;
         this.level = level;
         this.role = role;
         this.salary = salary;
     }
 
-    public Employee(String employeeCode, String name, String dateOfBirth, boolean gender, String identity, String phoneNumber, String email, String level, String role, String salary) {
+    public Employee(String employeeCode, String name, String dateOfBirth, String gender, String identity, String phoneNumber, String email, String level, String role, double salary) {
         super(name, dateOfBirth, gender, identity, phoneNumber, email);
         this.employeeCode = employeeCode;
         this.level = level;
@@ -51,11 +51,11 @@ public class Employee extends Person implements Comparable<Employee> {
         this.role = role;
     }
 
-    public String getSalary() {
+    public double getSalary() {
         return salary;
     }
 
-    public void setSalary(String salary) {
+    public void setSalary(double salary) {
         this.salary = salary;
     }
 
