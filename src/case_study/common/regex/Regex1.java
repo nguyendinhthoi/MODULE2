@@ -17,6 +17,8 @@ public class Regex1 {
     public static final String EMPLOYEE_DATE = "^([0-2]\\d|30|31)\\-([0]\\d|10|11|12)\\-(200[0-5]|19[6-9][0-9])$";
     private static final String EMPLOYEE_EMAIL = "^[a-z](\\w+)?@[a-z]{2,}\\.[a-z]+(\\.[a-z]+)?$";
     private static final String EMPLOYEE_GENDER = "^Man|Woman$";
+    public static final String CUSTOMER_CODE = "^KH-[0-9]{4}$";
+
 
     public static boolean validCheck(String regex, String string) {
         return string.matches(regex);
@@ -26,7 +28,7 @@ public class Regex1 {
         String employeeCode = null;
         do {
             try {
-                System.out.print("Let Enter Code of Employee in a Format : NV-YYYY(with Y is a number from 0 to 9)   ");
+                System.out.print("Let Enter Code of Person in a Format : NV-YYYY(with Y is a number from 0 to 9)   ");
                 employeeCode = scanner.nextLine();
                 validCheck(EMPLOYEE_CODE, employeeCode);
                 if (!validCheck(EMPLOYEE_CODE, employeeCode)) {
@@ -43,7 +45,7 @@ public class Regex1 {
         String name = null;
         do {
             try {
-                System.out.print("Let Enter Name of Employee (Must Capitalize the first letter of each word): ");
+                System.out.print("Let Enter Name (Must Capitalize the first letter of each word): ");
                 name = scanner.nextLine();
                 validCheck(EMPLOYEE_NAME, name);
                 if (!validCheck(EMPLOYEE_NAME, name)) {
@@ -60,7 +62,7 @@ public class Regex1 {
         String identity = null;
         do {
             try {
-                System.out.print("Let Enter Indentity of Employee to (contain 9 numbers or 12 numbers) :");
+                System.out.print("Let Enter Indentity (contain 9 numbers or 12 numbers) :");
                 identity = scanner.nextLine();
                 validCheck(EMPLOYEE_IDENTITY, identity);
                 if (!validCheck(EMPLOYEE_IDENTITY, identity)) {
@@ -77,7 +79,7 @@ public class Regex1 {
         String phoneNumber = null;
         do {
             try {
-                System.out.print("Let Enter PhoneNumber of Employee to (begin 0 and contain 10numbers) :");
+                System.out.print("Let Enter PhoneNumber (begin 0 and contain 10numbers) :");
                 phoneNumber = scanner.nextLine();
                 validCheck(EMPLOYEE_PHONE, phoneNumber);
                 if (!validCheck(EMPLOYEE_PHONE, phoneNumber)) {
@@ -94,7 +96,7 @@ public class Regex1 {
         double salary;
         do {
             try {
-                System.out.print("Let Enter Salary of Employee to (>0) :");
+                System.out.print("Let Enter Salary  (>0) :");
                 salary = Double.parseDouble(scanner.nextLine());
                 if (salary < 0) {
                     throw new InValidFormat();
@@ -111,7 +113,7 @@ public class Regex1 {
         String email = null;
         do {
             try {
-                System.out.print("Let Enter Email of Employee to (xxx@.xxx with x is a number or character) :");
+                System.out.print("Let Enter Email (xxx@.xxx with x is a number or character) :");
                 email = scanner.nextLine();
                 validCheck(EMPLOYEE_EMAIL, email);
                 if (!validCheck(EMPLOYEE_EMAIL, email)) {
@@ -120,7 +122,7 @@ public class Regex1 {
             } catch (InValidFormat e) {
                 System.out.println("Incorrect Format");
             }
-        } while (!validCheck(EMPLOYEE_PHONE, email));
+        } while (!validCheck(EMPLOYEE_EMAIL, email));
         return email;
     }
 
@@ -153,7 +155,7 @@ public class Regex1 {
         String[] strings = {"receptionist", "service", "specialist", "supervisor", "manager", "director"};
         boolean flag = true;
         do {
-            System.out.println("Let Enter Role of Employee (Receptionist, Service, Specialist, Supervisor, Manager, Director) :");
+            System.out.print("Let Enter Role of Employee (Receptionist, Service, Specialist, Supervisor, Manager, Director) :");
             String role = scanner.nextLine();
             role.toLowerCase();
             for (String s : strings) {
@@ -185,5 +187,58 @@ public class Regex1 {
         } while (!validCheck(EMPLOYEE_GENDER, gender));
         return gender;
     }
+
+    public static String checkDate() {
+        String date = null;
+        do {
+            try {
+                System.out.print("Let Enter Date of Birth (Format : DD-MM-YYYY with year<=2006) :");
+                date = scanner.nextLine();
+                validCheck(EMPLOYEE_DATE, date);
+                if (!validCheck(EMPLOYEE_DATE, date)) {
+                    throw new InValidFormat();
+                }
+            } catch (InValidFormat e) {
+                System.out.println("Incorrect Format");
+            }
+        } while (!validCheck(EMPLOYEE_DATE, date));
+        return date;
+    }
+    public static String checkIDOfCust() {
+        String customerCode = null;
+        do {
+            try {
+                System.out.print("Let Enter Code of Person in a Format : KH-YYYY(with Y is a number from 0 to 9)   ");
+                customerCode = scanner.nextLine();
+                validCheck(CUSTOMER_CODE, customerCode);
+                if (!validCheck(CUSTOMER_CODE, customerCode)) {
+                    throw new InValidFormat();
+                }
+            } catch (InValidFormat e) {
+                System.out.println("Incorrect Format");
+            }
+        } while (!validCheck(CUSTOMER_CODE, customerCode));
+        return customerCode;
+    }
+    public static String checkKindOfCust() {
+        String[] strings = {"diamond", "platinum", "gold silver", "member"};
+        boolean flag = true;
+        do {
+            System.out.print("Let Enter Kind of Customer (Diamond , Platinum , Gold silver , Member) :");
+            String kindOfCustomer = scanner.nextLine();
+            kindOfCustomer.toLowerCase();
+            for (String s : strings) {
+                if (s.equals(kindOfCustomer)) {
+                    return capitalizeFirst(kindOfCustomer);
+                } else {
+                    flag = false;
+                }
+            }
+            if (!flag) {
+                System.out.println("Incorrect by Menu");
+            }
+        } while (true);
+    }
+
 
 }

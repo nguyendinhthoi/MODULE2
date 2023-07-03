@@ -4,8 +4,6 @@ package case_study.service.person.employee;
 import case_study.common.exception.ConfirmFormat;
 import case_study.common.exception.IDAvailable;
 import case_study.common.exception.IDNotFound;
-import case_study.common.exception.InValidFormat;
-import case_study.common.regex.Regex;
 import case_study.common.regex.Regex1;
 import case_study.model.person.Employee;
 import case_study.repository.person.employee.EmployeeRepository;
@@ -32,10 +30,10 @@ public class EmployeeService implements IEmployeeService {
     public void addEmployee() {
         do {
             try {
-                String employeeCode = Regex.checkValidID();
+                String employeeCode = Regex1.checkID();
                 if (employeeRepository.searchIndex(employeeCode) == -1) {
                     String name = Regex1.checkName();
-                    String date = Regex.checkDate();
+                    String date = Regex1.checkDate();
                     String gender = Regex1.checkGender();
                     String identity = Regex1.checkIdentity();
                     String phoneNumber = Regex1.checkPhone();
@@ -53,8 +51,6 @@ public class EmployeeService implements IEmployeeService {
                 }
             } catch (IDAvailable e) {
                 System.out.println("ID Already Available!! Please Try Again!!");
-            } catch (InValidFormat e) {
-                System.out.println("Incorrect Format!!");
             }
         } while (true);
     }
@@ -75,7 +71,7 @@ public class EmployeeService implements IEmployeeService {
 
                     if (Objects.equals(confirm, "yes")) {
                         String name = Regex1.checkName();
-                        String date = Regex.checkDate();
+                        String date = Regex1.checkDate();
                         String gender = Regex1.checkGender();
                         String identity = Regex1.checkIdentity();
                         String phoneNumber = Regex1.checkPhone();
@@ -96,8 +92,6 @@ public class EmployeeService implements IEmployeeService {
                 }
             } catch (IDNotFound e) {
                 System.out.println("ID Not Found");
-            } catch (InValidFormat e) {
-                System.out.println("Incorrect Format!!");
             } catch (ConfirmFormat e) {
                 System.out.println("Please Just Enter yes or no!!! Try Again!!!");
             }
