@@ -18,6 +18,10 @@ public class Regex1 {
     private static final String EMPLOYEE_EMAIL = "^[a-z](\\w+)?@[a-z]{2,}\\.[a-z]+(\\.[a-z]+)?$";
     private static final String EMPLOYEE_GENDER = "^Man|Woman$";
     public static final String CUSTOMER_CODE = "^KH-[0-9]{4}$";
+    public static final String VILLA_CODE = "^SVVL-\\d{4}$";
+    public static final String HOUSE_CODE = "^SVHO-\\d{4}$";
+    public static final String ROOM_CODE = "^SVRO-\\d{4}$";
+    public static final String SERVICE_NAME = "^[A-Z][a-z]+((\\s[A-Z][a-z]+)+)?$";
 
 
     public static boolean validCheck(String regex, String string) {
@@ -204,6 +208,7 @@ public class Regex1 {
         } while (!validCheck(EMPLOYEE_DATE, date));
         return date;
     }
+
     public static String checkIDOfCust() {
         String customerCode = null;
         do {
@@ -220,6 +225,7 @@ public class Regex1 {
         } while (!validCheck(CUSTOMER_CODE, customerCode));
         return customerCode;
     }
+
     public static String checkKindOfCust() {
         String[] strings = {"diamond", "platinum", "gold silver", "member"};
         boolean flag = true;
@@ -238,6 +244,210 @@ public class Regex1 {
                 System.out.println("Incorrect by Menu");
             }
         } while (true);
+    }
+
+    public static String checkHouseCode() {
+        String id = null;
+        do {
+            try {
+                System.out.print("Let Enter Code of House in a Format : SVHO-YYYY(with Y is a number from 0 to 9)   ");
+                id = scanner.nextLine();
+                validCheck(HOUSE_CODE, id);
+                if (!validCheck(HOUSE_CODE, id)) {
+                    throw new InValidFormat();
+                }
+            } catch (InValidFormat e) {
+                System.out.println("Incorrect Format");
+            }
+        } while (!validCheck(HOUSE_CODE, id));
+        return id;
+    }
+
+    public static String checkVillaCode() {
+        String id = null;
+        do {
+            try {
+                System.out.print("Let Enter Code of House in a Format : SVVL-YYYY(with Y is a number from 0 to 9)   ");
+                id = scanner.nextLine();
+                validCheck(VILLA_CODE, id);
+                if (!validCheck(VILLA_CODE, id)) {
+                    throw new InValidFormat();
+                }
+            } catch (InValidFormat e) {
+                System.out.println("Incorrect Format");
+            }
+        } while (!validCheck(VILLA_CODE, id));
+        return id;
+    }
+
+    public static String checkRoomCode() {
+        String id = null;
+        do {
+            try {
+                System.out.print("Let Enter Code of House in a Format : SVRO-YYYY(with Y is a number from 0 to 9)   ");
+                id = scanner.nextLine();
+                validCheck(ROOM_CODE, id);
+                if (!validCheck(ROOM_CODE, id)) {
+                    throw new InValidFormat();
+                }
+            } catch (InValidFormat e) {
+                System.out.println("Incorrect Format");
+            }
+        } while (!validCheck(ROOM_CODE, id));
+        return id;
+    }
+
+    public static String checkNameService() {
+        String name = null;
+        do {
+            try {
+                System.out.print("Let Enter Name of Service (Must Capitalize the first letter of each word):    ");
+                name = scanner.nextLine();
+                validCheck(SERVICE_NAME, name);
+                if (!validCheck(SERVICE_NAME, name)) {
+                    throw new InValidFormat();
+                }
+            } catch (InValidFormat e) {
+                System.out.println("Incorrect Format");
+            }
+        } while (!validCheck(SERVICE_NAME, name));
+        return name;
+    }
+
+    public static double checkPoolArea() {
+        double poolArea;
+        do {
+            try {
+                System.out.print("Let Enter Pool Area (>30m2) :");
+                poolArea = Double.parseDouble(scanner.nextLine());
+                if (poolArea < 30) {
+                    throw new InValidFormat();
+                } else {
+                    return poolArea;
+                }
+            } catch (InValidFormat e) {
+                System.out.println("Enter Number > 30m2");
+            }
+        } while (true);
+    }
+
+    public static double checkUsualArea() {
+        double area;
+        do {
+            try {
+                System.out.print("Let Enter Pool Area (>30m2) :");
+                area = Double.parseDouble(scanner.nextLine());
+                if (area < 30) {
+                    throw new InValidFormat();
+                } else {
+                    return area;
+                }
+            } catch (InValidFormat e) {
+                System.out.println("Enter Number > 30m2");
+            }
+        } while (true);
+    }
+
+    public static double checkRentCost() {
+        double cost;
+        do {
+            try {
+                System.out.print("Let Enter Rent Cost (>0) :");
+                cost = Double.parseDouble(scanner.nextLine());
+                if (cost < 0) {
+                    throw new InValidFormat();
+                } else {
+                    return cost;
+                }
+            } catch (InValidFormat e) {
+                System.out.println("Enter Number > 0");
+            }
+        } while (true);
+    }
+
+    public static int checkMaxPeople() {
+        int people;
+        do {
+            try {
+                System.out.print("Let Enter Number of People (0 < People < 20) :");
+                people = Integer.parseInt(scanner.nextLine());
+                if (people < 0 || people > 20) {
+                    throw new InValidFormat();
+                } else {
+                    return people;
+                }
+            } catch (InValidFormat e) {
+                System.out.println("Enter Number of People > 0 and < 20");
+            }
+        } while (true);
+    }
+
+    public static int checkNumberOfFloor() {
+        int floor;
+        do {
+            try {
+                System.out.print("Let Enter Rent Cost (>0) :");
+                floor = Integer.parseInt(scanner.nextLine());
+                if (floor < 0) {
+                    throw new InValidFormat();
+                } else {
+                    return floor;
+                }
+            } catch (InValidFormat e) {
+                System.out.println("Enter Number > 0");
+            }
+        } while (true);
+    }
+
+    public static String checkRentalType() {
+        String rentalType = null;
+        do {
+            try {
+                System.out.print("Let Enter Rental Type (Must Capitalize the first letter of each word):    ");
+                rentalType = scanner.nextLine();
+                validCheck(SERVICE_NAME, rentalType);
+                if (!validCheck(SERVICE_NAME, rentalType)) {
+                    throw new InValidFormat();
+                }
+            } catch (InValidFormat e) {
+                System.out.println("Incorrect Format");
+            }
+        } while (!validCheck(SERVICE_NAME, rentalType));
+        return rentalType;
+    }
+
+    public static String checkKindOfRoom() {
+        String kindOfRoom = null;
+        do {
+            try {
+                System.out.print("Let Enter Kind of Room (Must Capitalize the first letter of each word):    ");
+                kindOfRoom = scanner.nextLine();
+                validCheck(SERVICE_NAME, kindOfRoom);
+                if (!validCheck(SERVICE_NAME, kindOfRoom)) {
+                    throw new InValidFormat();
+                }
+            } catch (InValidFormat e) {
+                System.out.println("Incorrect Format");
+            }
+        } while (!validCheck(SERVICE_NAME, kindOfRoom));
+        return kindOfRoom;
+    }
+
+    public static String checkFreeService() {
+        String freeService = null;
+        do {
+            try {
+                System.out.print("Let Enter Free Service (Must Capitalize the first letter of each word):    ");
+                freeService = scanner.nextLine();
+                validCheck(SERVICE_NAME, freeService);
+                if (!validCheck(SERVICE_NAME, freeService)) {
+                    throw new InValidFormat();
+                }
+            } catch (InValidFormat e) {
+                System.out.println("Incorrect Format");
+            }
+        } while (!validCheck(SERVICE_NAME, freeService));
+        return freeService;
     }
 
 

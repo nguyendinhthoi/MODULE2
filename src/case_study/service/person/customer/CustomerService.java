@@ -5,10 +5,8 @@ import case_study.common.exception.IDAvailable;
 import case_study.common.exception.IDNotFound;
 import case_study.common.regex.Regex1;
 import case_study.model.person.Customer;
-import case_study.model.person.Employee;
 import case_study.repository.person.customer.CustomerRepository;
 import case_study.repository.person.customer.ICustomerRepository;
-import case_study.service.person.customer.ICustomerService;
 
 import java.util.List;
 import java.util.Objects;
@@ -62,7 +60,7 @@ public class CustomerService implements ICustomerService {
     public void editCust() {
         do {
             try {
-                String customerCode  = Regex1.checkIDOfCust();
+                String customerCode = Regex1.checkIDOfCust();
                 if (customerRepository.searchIndex(customerCode) == -1) {
                     throw new IDNotFound();
                 } else {

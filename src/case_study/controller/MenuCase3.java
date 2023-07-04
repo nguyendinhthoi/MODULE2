@@ -1,9 +1,14 @@
 package case_study.controller;
 
+import case_study.service.facility.FacilityService;
+import case_study.service.facility.IFacilityService;
+
 import static case_study.view.Run.scanner;
 
 public class MenuCase3 {
+
     public static void selectCase3() {
+        IFacilityService iFacilityService = new FacilityService();
         do {
             try {
                 System.out.println("-----FACILITY MANAGEMENT-----\n" +
@@ -15,9 +20,11 @@ public class MenuCase3 {
                 switch (chooseChild) {
                     case 1:
                         System.out.println("-----DISPLAY MODE-----");
+                        iFacilityService.displayFacility();
                         break;
                     case 2:
                         System.out.println("-----ADD MODE-----");
+                        iFacilityService.addFacility();
                         break;
                     case 3:
                         System.out.println("-----DISPLAY LIST MAINTENANCE-----");

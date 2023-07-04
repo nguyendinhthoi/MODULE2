@@ -6,12 +6,12 @@ public abstract class Facility {
     protected double usableArea;
     protected double rentalCost;
     protected int maxPeople;
-    protected int rentalType;
+    protected String rentalType;
 
     public Facility() {
     }
 
-    public Facility(String serviceCode, String serviceName, double usableArea, double rentalCost, int maxPeople, int rentalType) {
+    public Facility(String serviceCode, String serviceName, double usableArea, double rentalCost, int maxPeople, String rentalType) {
         this.serviceCode = serviceCode;
         this.serviceName = serviceName;
         this.usableArea = usableArea;
@@ -60,11 +60,11 @@ public abstract class Facility {
         this.maxPeople = maxPeople;
     }
 
-    public int getRentalType() {
+    public String getRentalType() {
         return rentalType;
     }
 
-    public void setRentalType(int rentalType) {
+    public void setRentalType(String rentalType) {
         this.rentalType = rentalType;
     }
 

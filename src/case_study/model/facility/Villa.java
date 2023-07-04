@@ -1,7 +1,5 @@
 package case_study.model.facility;
 
-import case_study.model.facility.Facility;
-
 public class Villa extends Facility {
     private String kindOfRoom;
     private double poolArea;
@@ -10,13 +8,11 @@ public class Villa extends Facility {
     public Villa() {
     }
 
-    public Villa(String kindOfRoom) {
-        this.kindOfRoom = kindOfRoom;
-    }
-
-    public Villa(String serviceCode, String serviceName, double usableArea, double rentalCost, int maxPeople, int rentalType, String kindOfRoom) {
+    public Villa(String serviceCode, String serviceName, double usableArea, double rentalCost, int maxPeople, String rentalType, String kindOfRoom, double poolArea, int numberOfFloor) {
         super(serviceCode, serviceName, usableArea, rentalCost, maxPeople, rentalType);
         this.kindOfRoom = kindOfRoom;
+        this.poolArea = poolArea;
+        this.numberOfFloor = numberOfFloor;
     }
 
     public String getKindOfRoom() {
@@ -46,15 +42,15 @@ public class Villa extends Facility {
     @Override
     public String toString() {
         return "Villa{" +
-                "kindOfRoom='" + kindOfRoom + '\'' +
-                ", poolArea=" + poolArea +
-                ", numberOfFloor=" + numberOfFloor +
-                ", serviceCode='" + serviceCode + '\'' +
+                " serviceCode='" + serviceCode + '\'' +
                 ", serviceName='" + serviceName + '\'' +
                 ", usableArea=" + usableArea +
                 ", rentalCost=" + rentalCost +
                 ", maxPeople=" + maxPeople +
                 ", rentalType=" + rentalType +
+                ", kindOfRoom='" + kindOfRoom + '\'' +
+                ", poolArea=" + poolArea +
+                ", numberOfFloor=" + numberOfFloor +
                 '}';
     }
 }

@@ -1,7 +1,5 @@
 package case_study.model.facility;
 
-import case_study.model.facility.Facility;
-
 public class Room extends Facility {
     private String freeService;
 
@@ -12,7 +10,7 @@ public class Room extends Facility {
         this.freeService = freeService;
     }
 
-    public Room(String serviceCode, String serviceName, double usableArea, double rentalCost, int maxPeople, int rentalType, String freeService) {
+    public Room(String serviceCode, String serviceName, double usableArea, double rentalCost, int maxPeople, String rentalType, String freeService) {
         super(serviceCode, serviceName, usableArea, rentalCost, maxPeople, rentalType);
         this.freeService = freeService;
     }
@@ -28,13 +26,13 @@ public class Room extends Facility {
     @Override
     public String toString() {
         return "Room{" +
-                "freeService='" + freeService + '\'' +
-                ", serviceCode='" + serviceCode + '\'' +
+                " serviceCode='" + serviceCode + '\'' +
                 ", serviceName='" + serviceName + '\'' +
                 ", usableArea=" + usableArea +
                 ", rentalCost=" + rentalCost +
                 ", maxPeople=" + maxPeople +
                 ", rentalType=" + rentalType +
+                ", freeService='" + freeService + '\'' +
                 '}';
     }
 }

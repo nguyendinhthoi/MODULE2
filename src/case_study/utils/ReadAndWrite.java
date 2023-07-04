@@ -26,7 +26,7 @@ public class ReadAndWrite {
     public static void writeFile(String pathFile, List<String> stringList, boolean appand) {
         File file = new File(pathFile);
         try {
-            FileWriter fileWriter = new FileWriter(file,appand);
+            FileWriter fileWriter = new FileWriter(file, appand);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             for (String s : stringList) {
                 bufferedWriter.write(s);
